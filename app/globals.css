@@ -148,3 +148,16 @@ h1, h2, h3, h4, .font-display {
     display: none;
   }
 }
+
+@keyframes marquee-run {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-run {
+  display: flex;
+  width: max-content;
+  animation: marquee-run 30s linear infinite;
+}
+.marquee-run:hover {
+  animation-play-state: paused;
+}
