@@ -119,3 +119,32 @@ h1, h2, h3, h4, .font-display {
 .rec-dot {
   animation: rec-blink 1.2s ease-in-out infinite;
 }
+
+.hero-swiper .swiper-button-next,
+.hero-swiper .swiper-button-prev {
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  color: var(--color-neutral-content);
+  background: color-mix(in oklab, var(--color-neutral) 55%, transparent);
+  border: 1px solid color-mix(in oklab, var(--color-neutral-content) 35%, transparent);
+}
+.hero-swiper .swiper-button-next::after,
+.hero-swiper .swiper-button-prev::after {
+  font-size: 16px;
+  font-weight: 700;
+}
+.hero-swiper .swiper-pagination-bullet {
+  background: var(--color-neutral-content);
+  opacity: 0.6;
+}
+.hero-swiper .swiper-pagination-bullet-active {
+  background: var(--color-primary);
+  opacity: 1;
+}
+@media (max-width: 767px) {
+  .hero-swiper .swiper-button-next,
+  .hero-swiper .swiper-button-prev {
+    display: none;
+  }
+}
