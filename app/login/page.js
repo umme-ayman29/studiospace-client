@@ -3,8 +3,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { FcGoogle } from "react-icons/fc";
 import { useAuth } from "@/context/AuthContext";
+import GoogleButton from "@/components/GoogleButton";
 
 export default function LoginPage() {
   const { login } = useAuth();
@@ -94,13 +94,7 @@ export default function LoginPage() {
 
         <div className="divider text-xs">OR</div>
 
-        <button
-          type="button"
-          onClick={() => toast.info("Google login is being added soon.")}
-          className="btn btn-outline w-full gap-2"
-        >
-          <FcGoogle className="text-xl" /> Continue with Google
-        </button>
+        <GoogleButton />
 
         <p className="mt-6 text-center text-sm">
           New to StudioSpace?{" "}

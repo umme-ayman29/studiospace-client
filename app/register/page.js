@@ -3,8 +3,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { FcGoogle } from "react-icons/fc";
 import { useAuth } from "@/context/AuthContext";
+import GoogleButton from "@/components/GoogleButton";
 
 function validatePassword(pw) {
   if (pw.length < 6) return "Password must be at least 6 characters long.";
@@ -60,19 +60,45 @@ export default function RegisterPage() {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="mb-1 block text-sm font-medium">Name</label>
-            <input required value={form.name} onChange={update("name")} placeholder="Your full name" className="input w-full" />
+            <input
+              required
+              value={form.name}
+              onChange={update("name")}
+              placeholder="Your full name"
+              className="input w-full"
+            />
           </div>
           <div>
             <label className="mb-1 block text-sm font-medium">Email</label>
-            <input type="email" required value={form.email} onChange={update("email")} placeholder="you@example.com" className="input w-full" />
+            <input
+              type="email"
+              required
+              value={form.email}
+              onChange={update("email")}
+              placeholder="you@example.com"
+              className="input w-full"
+            />
           </div>
           <div>
             <label className="mb-1 block text-sm font-medium">Photo URL</label>
-            <input type="url" value={form.photoURL} onChange={update("photoURL")} placeholder="https://example.com/photo.jpg" className="input w-full" />
+            <input
+              type="url"
+              value={form.photoURL}
+              onChange={update("photoURL")}
+              placeholder="https://example.com/photo.jpg"
+              className="input w-full"
+            />
           </div>
           <div>
             <label className="mb-1 block text-sm font-medium">Password</label>
-            <input type="password" required value={form.password} onChange={update("password")} placeholder="Uppercase, lowercase, 6+ characters" className="input w-full" />
+            <input
+              type="password"
+              required
+              value={form.password}
+              onChange={update("password")}
+              placeholder="Uppercase, lowercase, 6+ characters"
+              className="input w-full"
+            />
             {passwordError && <p className="mt-1 text-sm text-error">{passwordError}</p>}
           </div>
 
@@ -87,13 +113,7 @@ export default function RegisterPage() {
 
         <div className="divider text-xs">OR</div>
 
-        <button
-          type="button"
-          onClick={() => toast.info("Google sign-up is being added soon.")}
-          className="btn btn-outline w-full gap-2"
-        >
-          <FcGoogle className="text-xl" /> Continue with Google
-        </button>
+        <GoogleButton />
 
         <p className="mt-6 text-center text-sm">
           Already have an account?{" "}

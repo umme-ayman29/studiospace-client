@@ -23,13 +23,19 @@ export function AuthProvider({ children }) {
 
   const register = (payload) => api("/auth/register", { method: "POST", body: payload });
 
+  const googleLogin = async (credential) => {
+    const data = await api("/auth/google", { method: "POST", body: { credential } });
+    setUser(data.user);
+    return data.user;
+  };
+
   const logout = async () => {
     await api("/auth/logout", { method: "POST" });
     setUser(null);
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout }}>
+    <AuthContext.Provider value={{ user, loading, login, register, googleLogin, logout }}>
       {children}
     </AuthContext.Provider>
   );
