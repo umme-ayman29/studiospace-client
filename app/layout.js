@@ -1,11 +1,12 @@
-import { Poppins } from "next/font/google";
+import { DM_Sans, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 import { AuthProvider } from "@/context/AuthContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
+const bodyFont = DM_Sans({ subsets: ["latin"], variable: "--f-body" });
+const displayFont = Bricolage_Grotesque({ subsets: ["latin"], variable: "--f-display" });
 
 export const metadata = {
   title: "StudioSpace | Rent Creative Studios",
@@ -24,7 +25,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body
-        className={`${poppins.className} flex min-h-screen flex-col bg-base-100 text-base-content`}
+        className={`${bodyFont.variable} ${displayFont.variable} flex min-h-screen flex-col bg-base-100 text-base-content`}
       >
         <AuthProvider>
           <Navbar />

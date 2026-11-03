@@ -73,19 +73,19 @@ export default function Footer() {
           <p className="mb-3 text-sm text-base-content/70">
             Get new studio listings and creator tips in your inbox.
           </p>
-          <form onSubmit={subscribe} className="join w-full">
-            <input
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@example.com"
-              className="input join-item w-full"
-            />
-            <button type="submit" className="btn btn-primary join-item">
-              Join
-            </button>
-          </form>
+          <form onSubmit={subscribe} className="flex w-full gap-2">
+  <input
+    type="email"
+    required
+    value={email}
+    onChange={(e) => setEmail(e.target.value)}
+    placeholder="you@example.com"
+    className="input w-full"
+  />
+  <button type="submit" className="btn btn-primary">
+    Join
+  </button>
+</form>
         </div>
       </div>
 

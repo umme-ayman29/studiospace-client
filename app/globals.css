@@ -1,5 +1,7 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+  exclude: join;
+}
 
 @plugin "daisyui/theme" {
   name: "studiolight";
@@ -70,4 +72,50 @@
 
 html {
   scroll-behavior: smooth;
+}
+body {
+  font-family: var(--f-body), ui-sans-serif, system-ui, sans-serif;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--f-display), ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.eyebrow {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.slate-stripes {
+  background: repeating-linear-gradient(135deg, var(--color-primary) 0 14px, var(--color-neutral) 14px 28px);
+}
+
+.film-strip {
+  height: 26px;
+  background-color: var(--color-neutral);
+  background-image: radial-gradient(circle at 14px 50%, var(--color-base-100) 5px, transparent 6px);
+  background-size: 28px 100%;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+@keyframes rec-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.15; }
+}
+.rec-dot {
+  animation: rec-blink 1.2s ease-in-out infinite;
 }
