@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# StudioSpace
 
-## Getting Started
+**Live site:** https://studiospace-client-lilac.vercel.app
 
-First, run the development server:
+StudioSpace is a peer-to-peer marketplace where creators discover and book photo studios, sound stages, podcast lounges, music suites and art workshops, and where hosts list their spaces and manage booking requests.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Studio marketplace:** browse, search, filter by category and sort studios by price or rating, with a featured section that loads the top six studios from MongoDB.
+- **Authentication:** email and password registration with password rules (uppercase, lowercase and six or more characters), plus Google sign-in. Sessions use a JWT stored in an HTTP-only cookie, so reloading any private route keeps you signed in.
+- **Studio management (CRUD):** add a studio with image upload through imgbb, update it, or delete it after a confirmation modal. Only the owner can edit or delete a listing.
+- **Booking system:** reserve a time slot from the studio details page. New bookings start as Pending, the host can confirm or complete them, and the guest can cancel pending ones.
+- **Double-booking prevention:** a new request is rejected with a clear message if it overlaps a Confirmed booking for the same studio and date.
+- **Reviews and ratings:** studio ratings are calculated from submitted reviews.
+- **Polished experience:** light and dark theme toggle, skeleton loaders, empty states, a custom 404 page, and Sonner toast notifications with custom modals instead of browser alerts.
+- **Responsive design:** works on mobile, tablet and desktop.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Frontend:** Next.js (App Router), React, Tailwind CSS, DaisyUI, Swiper, Sonner, React Icons
+- **Backend:** Express.js, MongoDB (native driver), JWT, bcryptjs, Google Auth Library
+- **Services:** imgbb for image hosting, Vercel for hosting
+- **Server repository:** https://github.com/umme-ayman29/studiospace-server
 
-## Learn More
+## Examiner Test Credentials
 
-To learn more about Next.js, take a look at the following resources:
+| Role | Email | Password |
+|---|---|---|
+| Host (owns sample studios) | test@example.com | Test12 |
+| Creator (can book studios) | guest@example.com | Guest12 |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Google sign-in is also available on the login and register pages. On the login page, the **Use demo account** button fills in the host credentials.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Local Setup
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Clone the server and client repositories.
+2. Start the server:
+   ```bash
+   cd studiospace-server
+   npm install
+   npm run dev
+   ```
+   Create a `.env` file with `PORT`, `MONGODB_URI`, `JWT_SECRET`, `CLIENT_URL` and `GOOGLE_CLIENT_ID`.
+3. Start the client:
+   ```bash
+   cd studiospace-client
+   npm install
+   npm run dev
+   ```
+   Create a `.env.local` file with:
+   ```
+   API_URL=http://localhost:5000
+   NEXT_PUBLIC_IMGBB_KEY=your_imgbb_key
+   NEXT_PUBLIC_GOOGLE_CLIENT_ID=your_google_client_id
+   ```
+4. Open http://localhost:3000.
