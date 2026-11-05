@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
@@ -8,70 +7,72 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 
-const SLIDES = [
+const slides = [
   {
     scene: "Scene 01",
-    title: "Find the Perfect Studio for Your Next Shoot",
-    text: "Browse photography cyc walls, cinema sound stages and more, booked by the hour with transparent pricing.",
-    image: "/hero/slide-1.jpg",
+    img: "/hero/slide1.jpg",
+    title: "Your Next Shoot Starts in the Right Room",
+    text: "Cyc walls, daylight lofts and fully lit photo studios, priced by the hour with no surprises.",
   },
   {
     scene: "Scene 02",
+    img: "/hero/slide2.jpg",
     title: "Record, Stream and Produce in Pro Sound",
     text: "Podcast lounges and music recording suites with the gear already set up and waiting for you.",
-    image: "/hero/slide-2.jpg",
   },
   {
     scene: "Scene 03",
-    title: "Turn Your Empty Space into a Creative Set",
-    text: "List your studio, set your hourly rate and let creators book open slots in real time.",
-    image: "/hero/slide-3.jpg",
+    img: "/hero/slide3.jpg",
+    title: "Turn Your Empty Room into Creative Income",
+    text: "List your studio, set your rate and let creators book it with real-time availability.",
   },
 ];
 
-const OVERLAY = {
-  background:
-    "linear-gradient(90deg, color-mix(in oklab, var(--color-neutral) 92%, transparent) 0%, color-mix(in oklab, var(--color-neutral) 70%, transparent) 45%, color-mix(in oklab, var(--color-neutral) 25%, transparent) 100%)",
-};
-
 export default function HeroSlider() {
   return (
-    <section className="hero-swiper relative">
+    <section>
       <Swiper
         modules={[Autoplay, Pagination, Navigation, EffectFade]}
         effect="fade"
+        loop
         autoplay={{ delay: 5500, disableOnInteraction: false }}
         pagination={{ clickable: true }}
         navigation
-        loop
-        className="h-[70vh] min-h-[500px] max-h-[720px]"
+        style={{
+          "--swiper-theme-color": "#fb923c",
+          "--swiper-navigation-color": "#ffffff",
+          "--swiper-pagination-bullet-inactive-color": "#ffffff",
+          height: "78vh",
+          minHeight: "520px",
+        }}
       >
-        {SLIDES.map((s) => (
+        {slides.map((s) => (
           <SwiperSlide key={s.scene}>
-            <div
-              className="relative flex h-full items-center bg-neutral bg-cover bg-center"
-              style={{ backgroundImage: `url(${s.image})` }}
-            >
-              <div className="absolute inset-0" style={OVERLAY} />
-              <div className="relative mx-auto w-full max-w-7xl px-6 md:px-16">
-                <div className="max-w-2xl text-neutral-content">
-                  <p className="eyebrow mb-4 flex items-center gap-2">
-                    <span className="rec-dot" />
+            <div className="relative h-full w-full bg-neutral">
+              <img
+                src={s.img}
+                alt={s.title}
+                className="absolute inset-0 h-full w-full object-cover object-center"
+                onError={(e) => (e.currentTarget.style.display = "none")}
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/10" />
+
+              <div className="relative mx-auto flex h-full max-w-7xl items-center px-6 sm:px-12">
+                <div className="max-w-2xl text-white">
+                  <p className="mb-4 font-mono text-xs font-semibold uppercase tracking-[0.3em] text-orange-400">
                     {s.scene}
                   </p>
-                  <h1 className="text-4xl font-bold leading-tight md:text-6xl">
+                  <h1 className="text-4xl font-bold leading-[1.05] sm:text-5xl md:text-6xl">
                     {s.title}
                   </h1>
-                  <p className="mt-5 max-w-xl text-base opacity-85 md:text-lg">
-                    {s.text}
-                  </p>
-                  <div className="mt-8 flex flex-wrap gap-4">
-                    <Link href="/studios" className="btn btn-primary">
+                  <p className="mt-5 max-w-xl text-lg text-white/85">{s.text}</p>
+                  <div className="mt-8 flex flex-wrap gap-3">
+                    <Link href="/studios" className="btn btn-primary btn-lg">
                       Explore Studios
                     </Link>
                     <Link
                       href="/add-studio"
-                      className="btn btn-outline border-neutral-content text-neutral-content hover:border-neutral-content hover:bg-neutral-content hover:text-neutral"
+                      className="btn btn-outline btn-lg border-white text-white hover:border-white hover:bg-white hover:text-black"
                     >
                       Host Your Space
                     </Link>
