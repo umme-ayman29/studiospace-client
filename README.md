@@ -4,6 +4,11 @@
 
 StudioSpace is a peer-to-peer marketplace where creators discover and book photo studios, sound stages, podcast lounges, music suites and art workshops, and where hosts list their spaces and manage booking requests.
 
+## Project Preview
+
+<img width="100%" alt="StudioSpace Preview" src="https://github.com/user-attachments/assets/632eeb10-9c3c-42d0-b904-f29602ab1e3c" />
+
+
 ## Features
 
 - **Studio marketplace:** browse, search, filter by category and sort studios by price or rating, with a featured section that loads the top six studios from MongoDB.
@@ -20,12 +25,19 @@ StudioSpace is a peer-to-peer marketplace where creators discover and book photo
 - **Frontend:** Next.js (App Router), React, Tailwind CSS, DaisyUI, Swiper, Sonner, React Icons
 - **Backend:** Express.js, MongoDB (native driver), JWT, bcryptjs, Google Auth Library
 - **Services:** imgbb for image hosting, Vercel for hosting
-- **Server repository:** https://github.com/umme-ayman29/studiospace-server
+
+## Dependencies
+
+**Client:** Next.js, React, Tailwind CSS, DaisyUI, Swiper, Sonner, React Icons
+
+**Server:** Express.js, MongoDB (native driver), JWT, bcryptjs, Google Auth Library
+
+For the complete list and versions, see `package.json` in each repository.
 
 ## Examiner Test Credentials
 
 | Role | Email | Password |
-|---|---|---|
+| --- | --- | --- |
 | Host (owns sample studios) | test@example.com | Test12 |
 | Creator (can book studios) | guest@example.com | Guest12 |
 
@@ -35,14 +47,14 @@ Google sign-in is also available on the login and register pages. On the login p
 
 1. Clone the server and client repositories.
 2. Start the server:
-   ```bash
+   ```
    cd studiospace-server
    npm install
    npm run dev
    ```
    Create a `.env` file with `PORT`, `MONGODB_URI`, `JWT_SECRET`, `CLIENT_URL` and `GOOGLE_CLIENT_ID`.
 3. Start the client:
-   ```bash
+   ```
    cd studiospace-client
    npm install
    npm run dev
@@ -53,4 +65,11 @@ Google sign-in is also available on the login and register pages. On the login p
    NEXT_PUBLIC_IMGBB_KEY=your_imgbb_key
    NEXT_PUBLIC_GOOGLE_CLIENT_ID=your_google_client_id
    ```
-4. Open http://localhost:3000.
+4. Open http://localhost:3000
+
+## Relevant Links
+
+- **Live Website:** https://studiospace-client-lilac.vercel.app
+- **Client Repository:** https://github.com/umme-ayman29/studiospace-client
+- **Server Repository:** https://github.com/umme-ayman29/studiospace-server
+- **Server Live Link:** https://studiospace-server-two.vercel.app
